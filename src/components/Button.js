@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled, { ThemeProvider } from 'styled-components'
 import {hot} from "react-hot-loader";
-import {baseTheme, splashAnimation} from '../Core/baseTheme.js';
+import {baseTheme, splashAnimation} from './Core/baseTheme.js';
 
 const RaisedButton = styled.button`
   position: relative;

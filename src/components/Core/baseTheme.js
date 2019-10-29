@@ -19,6 +19,7 @@ export const baseTheme = {
     transitionCurve: "ease",
     buttonPadding: "0.45em 1.45em",
     fontFamily: "'IBM Plex Sans', sans-serif",
+    smallControlHeight: "22px",
 };
 
 export const splashAnimation = keyframes`

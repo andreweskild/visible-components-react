@@ -3,22 +3,22 @@ import styled, { ThemeProvider } from 'styled-components'
 import {hot} from "react-hot-loader";
 import {baseTheme, splashAnimation} from './Core/baseTheme.js';
 
-const StyledCheckbox = styled.button`
+const StyledSwitchBox = styled.button`
   height: ${props => props.theme.smallControlHeight};
-  width: ${props => props.theme.smallControlHeight};
+  width: calc(${props => props.theme.smallControlHeight} * 1.5);
   user-select: none;
   position: relative;
   box-sizing: border-box;
-  background-color: ${props => props.theme.controlSurfaceNormal};
-  color: ${props => props.theme.controlAccentNormal};
-  border: ${props => props.theme.borderWidth} solid ${props => props.theme.controlAccentNormal};
+  background-color: ${props => props.theme.controlSurfaceDisabled};
+  color: ${props => props.theme.controlAccentDisabled};
+  border: ${props => props.theme.borderWidth} solid ${props => props.theme.controlAccentDisabled};
   border-radius: ${props => props.theme.borderRadius};
-  box-shadow: ${props => props.theme.shadow};
   outline: none;
   transition-property: background-color, color, box-shadow, border;
   transition-duration: ${props => props.theme.transitionDuration};
   transition-timing-function: ${props => props.theme.transitionCurve};
   font-family: ${props => props.theme.fontFamily};
+  padding: 0;
 
   :hover {
     background-color: ${props => props.danger ? props.theme.controlSurfaceDanger : props.theme.controlSurfaceHover};
@@ -38,40 +38,6 @@ const StyledCheckbox = styled.button`
     color: ${props => props.theme.controlAccentDisabled};
     border-color: ${props => props.theme.controlAccentDisabled};
     box-shadow: none;
-  }
-
-  :after {
-    content: "";
-    position: absolute;
-    opacity: ${props => props.checked ? '1.0' : '0.0'};
-    box-sizing: border-box;
-  }
-
-  :after {
-    transition-property: border-color, opacity;
-    transition-duration: ${props => props.theme.transitionDuration};
-    transition-timing-function: ${props => props.theme.transitionCurve};
-    left: 35%;
-    top: 12%;
-    width: 30%;
-    height: 60%;
-    border: solid ${props => props.theme.controlAccentNormal};
-    border-width: 0 1px 1px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  :hover:after {
-    border-color: ${props => props.theme.controlAccentHover}
-  }
-  
-  :active:after {
-    border-color: ${props => props.theme.controlAccentActive}
-  }
-
-  :disabled:after {
-    border-color: ${props => props.theme.controlAccentDisabled};
   }
 
   .button__splash {
@@ -102,20 +68,31 @@ const StyledCheckbox = styled.button`
   }
 `;
 
-StyledCheckbox.defaultProps = {
+const StyledSwitchControl = styled.div`
+  height: ${props => props.theme.smallControlHeight};
+  width: ${props => props.theme.smallControlHeight};
+  background-color: red;
+`;
+
+StyledSwitchBox.defaultProps = {
+  theme: baseTheme
+}
+
+StyledSwitchControl.defaultProps = {
   theme: baseTheme
 }
 
 
-class Checkbox extends Component {
+class Switch extends Component {
   render() {
-    return <StyledCheckbox
-      checked={this.props.checked}
+    return <StyledSwitchBox
+      toggled={this.props.toggled}
       onClick={this.props.onClick}
       disabled={this.props.disabled}>
       <div className='button__splash'></div>
-    </StyledCheckbox>;
+      <StyledSwitchControl></StyledSwitchControl>
+    </StyledSwitchBox>;
   }
 }
 
-export default hot(module)(Checkbox);
+export default hot(module)(Switch);

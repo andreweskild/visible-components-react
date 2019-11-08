@@ -49,7 +49,7 @@ const RaisedButton = styled.button`
     z-index: -1;
   }
 
-  :active .button__splash {
+  :active:enabled .button__splash {
     animation-name: ${splashAnimation};
     animation-duration: ${props => props.theme.transitionDuration};
     animation-fill-mode: forwards;

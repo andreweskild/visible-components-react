@@ -26,9 +26,9 @@ class App extends Component{
   render(){
     return(
       <div className="App">
-          <Button danger disabled onClick={test}>Button</Button>
-          <Checkbox disabled checked={this.state.checked} onClick={this.handleClick}></Checkbox>
-          <Switch toggled={this.state.checked} onClick={this.handleClick}></Switch>
+          <Button onClick={test}>Button</Button>
+          <Checkbox checked={this.state.checked} onClick={this.handleClick}></Checkbox>
+          <Switch disabled toggled={this.state.checked} onClick={this.handleClick}></Switch>
       </div>
     );
   }

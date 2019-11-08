@@ -20,23 +20,41 @@ const StyledSwitchBox = styled.button`
   font-family: ${props => props.theme.fontFamily};
   padding: 0;
 
-  :hover {
-    background-color: ${props => props.danger ? props.theme.controlSurfaceDanger : props.theme.controlSurfaceHover};
-    color: ${props => props.danger ? props.theme.controlAccentDanger : props.theme.controlAccentHover};
-    border-color: ${props => props.danger ? props.theme.controlAccentDanger : props.theme.controlAccentHover};
-  }
-
-  :active {
-    background-color: ${props => props.danger ? props.theme.controlAccentDanger : props.theme.controlAccentHover};
-    color: ${props => props.danger ? props.theme.controlSurfaceDanger : props.theme.controlSurfaceHover};
-    border-color: ${props => props.danger ? props.theme.controlAccentDanger : props.theme.controlAccentHover};
-    box-shadow: none;
-  }
-
   :disabled {
     background-color: ${props => props.theme.controlSurfaceDisabled};
     color: ${props => props.theme.controlAccentDisabled};
     border-color: ${props => props.theme.controlAccentDisabled};
+  }
+
+  .switch__control {
+    height: ${props => props.theme.smallControlHeight};
+    width: ${props => props.theme.smallControlHeight};
+    box-sizing: border-box;
+    background-color: ${props => props.theme.controlSurfaceNormal};
+    color: ${props => props.theme.controlAccentNormal};
+    border: ${props => props.theme.borderWidth} solid ${props => props.theme.controlAccentNormal};
+    border-radius: ${props => props.theme.borderRadius};
+    position: absolute;
+    transition-property: background-color, color, box-shadow, border, left;
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionCurve};
+    left: ${props => props.toggled ? 
+      "calc(" + props.theme.smallControlHeight + "* .5 - 1px)" : 
+      "-1px"};
+    top: -1px;
+    box-shadow: ${props => props.theme.shadow};
+  }
+
+  :hover .switch__control {
+    background-color: ${props => props.theme.controlSurfaceHover};
+    color: ${props => props.theme.controlAccentHover};
+    border-color: ${props => props.theme.controlAccentHover};
+  }
+
+  :active .switch__control {
+    background-color: ${props => props.theme.controlAccentHover};
+    color: ${props => props.theme.controlSurfaceHover};
+    border-color: ${props => props.theme.controlAccentHover};
     box-shadow: none;
   }
 
@@ -49,15 +67,16 @@ const StyledSwitchBox = styled.button`
     border-radius: ${props => props.theme.splashBorderRadius};
     box-sizing: content-box;
     pointer-events: none;
-    z-index: -1;
   }
 
-  :active .button__splash {
+  :active:enabled .button__splash {
     animation-name: ${splashAnimation};
     animation-duration: ${props => props.theme.transitionDuration};
     animation-fill-mode: forwards;
     border: ${props => props.theme.borderWidth} solid ${props => props.danger ? props.theme.controlAccentDanger : props.theme.controlAccentHover};
   }
+  
+  
 
   .material-icons {
     position: absolute;
@@ -68,17 +87,7 @@ const StyledSwitchBox = styled.button`
   }
 `;
 
-const StyledSwitchControl = styled.div`
-  height: ${props => props.theme.smallControlHeight};
-  width: ${props => props.theme.smallControlHeight};
-  background-color: red;
-`;
-
 StyledSwitchBox.defaultProps = {
-  theme: baseTheme
-}
-
-StyledSwitchControl.defaultProps = {
   theme: baseTheme
 }
 
@@ -89,8 +98,9 @@ class Switch extends Component {
       toggled={this.props.toggled}
       onClick={this.props.onClick}
       disabled={this.props.disabled}>
-      <div className='button__splash'></div>
-      <StyledSwitchControl></StyledSwitchControl>
+      <div className="switch__control">
+        <div className='button__splash'></div>
+      </div>
     </StyledSwitchBox>;
   }
 }

@@ -4,6 +4,7 @@ import "./App.css";
 import Button from './components/Button.js';
 import Checkbox from "./components/Checkbox.js";
 import Switch from "./components/Switch.js";
+import RadioButton from "./components/RadioButton.js";
 
 function test() {
     console.log('button');
@@ -28,6 +29,7 @@ class App extends Component{
       <div className="App">
           <Button onClick={test}>Button</Button>
           <Checkbox checked={this.state.checked} onClick={this.handleClick}></Checkbox>
+          <RadioButton checked={this.state.checked} onClick={this.handleClick}></RadioButton>
           <Switch disabled toggled={this.state.checked} onClick={this.handleClick}></Switch>
       </div>
     );

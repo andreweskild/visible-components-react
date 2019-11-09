@@ -20,6 +20,7 @@ export const baseTheme = {
     buttonPadding: "0.45em 1.45em",
     fontFamily: "'IBM Plex Sans', sans-serif",
     smallControlHeight: "22px",
+    smallRoundControlHeight: "24px",
 };
 
 export const splashAnimation = keyframes`

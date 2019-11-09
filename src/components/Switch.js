@@ -58,6 +58,13 @@ const StyledSwitchBox = styled.button`
     box-shadow: none;
   }
 
+  :disabled .switch__control {
+    background-color: ${props => props.theme.controlSurfaceDisabled};
+    color: ${props => props.theme.controlAccentDisabled};
+    border-color: ${props => props.theme.controlAccentDisabled};
+    box-shadow: none;
+  }
+
   .button__splash {
     position: absolute;
     left: -1px;

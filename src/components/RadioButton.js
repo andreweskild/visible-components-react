@@ -43,7 +43,7 @@ const StyledRadioButton = styled.button`
   :after {
     content: "";
     position: absolute;
-    opacity: ${props => props.checked ? '1.0' : '0.0'};
+    opacity: ${props => props.value == props.groupValue ? '1.0' : '0.0'};
     box-sizing: border-box;
   }
 
@@ -107,8 +107,9 @@ StyledRadioButton.defaultProps = {
 class RadioButton extends Component {
   render() {
     return <StyledRadioButton
-      checked={this.props.checked}
-      onClick={this.props.onClick}
+      value={this.props.value}
+      groupValue={this.props.groupValue}
+      onClick={this.props.onChanged}
       disabled={this.props.disabled}>
       <div className='button__splash'></div>
     </StyledRadioButton>;

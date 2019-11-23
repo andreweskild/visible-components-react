@@ -31,7 +31,7 @@ class App extends Component{
           <Button onClick={test}>Button</Button>
           <Checkbox checked={this.state.checked} onClick={this.handleClick}></Checkbox>
           <RadioButton value={this.state.checked} groupValue={false} onChanged={this.handleClick}></RadioButton>
-          <Switch disabled toggled={this.state.checked} onClick={this.handleClick}></Switch>
+          <Switch toggled={this.state.checked} onClick={this.handleClick}></Switch>
           <Slider></Slider>
       </div>
     );
